@@ -45,15 +45,15 @@
 - has_one :address
 
 ##### addressesテーブル
-| Column       | Type       | Options                   |
-| ------------ | ---------- | ------------------------- |
-| postal_code  | string     | null: false               |
-| prefecture   | references | null: false               |
-| city         | string     | null: false               |
-| addresses    | string     | null: false               |
-| building     | string     |                           |
-| phone_number | string     | null: false               |
-| order        | references | null: false, unique: true |
+| Column        | Type       | Options                   |
+| ------------- | ---------- | ------------------------- |
+| postal_code   | string     | null: false               |
+| prefecture_id | integer    | null: false               |
+| city          | string     | null: false               |
+| addresses     | string     | null: false               |
+| building      | string     |                           |
+| phone_number  | string     | null: false               |
+| order         | references | null: false, unique: true |
 
 ##### Association
 - belongs_to :order
