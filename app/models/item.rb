@@ -5,12 +5,17 @@ class Item < ApplicationRecord
   belongs_to :shipping_cost
   belongs_to :prefecture
   belongs_to :shipping_day
+  belongs_to :user
+  has_one_attached :image
 
   with_options presence: true do
     validates :image
     validates :item_name
     validates :description
-    validates :price
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  end
+
+  with_options numericality: { other_than: 1, message: 'を選択してください' } do
     validates :category_id
     validates :item_status_id
     validates :shipping_cost_id
