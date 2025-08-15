@@ -47,7 +47,10 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    # ログインユーザーが出品者と異なる場合、トップページに遷移
+    unless user_signed_in?
+      redirect_to new_user_session_path
+      return
+    end
     if current_user.id != @item.user_id
       redirect_to root_path
     end
