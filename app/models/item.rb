@@ -23,4 +23,7 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :shipping_day_id
   end
+  def sold_out?
+    order.present?
+  end
 end
