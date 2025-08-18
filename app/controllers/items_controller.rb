@@ -26,6 +26,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    # 商品が売れている場合、トップページにリダイレクトする
+    return unless @item.order.present?
+
+    redirect_to root_path
   end
 
   def update
