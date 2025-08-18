@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.includes(:user).order("created_at DESC")
+    @items = Item.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @sold_out = @item.order.present?
   end
 
   def edit
@@ -52,8 +53,8 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    if current_user.id != @item.user_id
-      redirect_to root_path
-    end
+    return unless current_user.id != @item.user_id
+
+    redirect_to root_path
   end
 end
