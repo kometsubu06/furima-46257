@@ -1,7 +1,6 @@
 let payFunctionExecuted = false;
 const pay = () => {
   const form = document.getElementById("charge-form");
-  console.log("1")      
   if (!form) { return; }
 
   payFunctionExecuted = true;
@@ -12,7 +11,7 @@ const pay = () => {
       if (typeof window.gon !== 'undefined' && gon.public_key) {
         clearInterval(interval);
         resolve();
-      }
+      }  
     }, 50);
   });
   
