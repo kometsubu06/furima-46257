@@ -28,7 +28,6 @@ const pay = () => {
       cvcElement.mount('#cvc-form');
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-          console.log("2")      
         
         const submitBtn = document.getElementById("button");
         if (submitBtn) {
@@ -66,4 +65,5 @@ const pay = () => {
   });
 };
 
-window.addEventListener("load", pay);
+window.addEventListener("turbo:load", pay);
+window.addEventListener("turbo:render", price);

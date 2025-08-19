@@ -16,4 +16,11 @@ class User < ApplicationRecord
   # validates_format_of を使うことで、Deviseの他のバリデーション(presence, length, confirmation)を上書きしない
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'must include both letters and numbers'
+
+  has_one :order
+
+  # 購入済みかどうかを判定するメソッド
+  def ordered?
+    order.present?
+  end
 end

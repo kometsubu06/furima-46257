@@ -9,17 +9,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_form = OrderForm.new(order_params.merge(user_id: current_user.id, item_id: params[:item_id]))
-    Rails.logger.debug '===== DEBUG ====='
-    Rails.logger.debug "params[:order_form][:token] => #{params[:order_form][:token]}"
-    Rails.logger.debug "order_params[:token] => #{order_params[:token]}"
-    Rails.logger.debug "@order_form.token => #{@order_form.token}"
-    Rails.logger.debug '================='
-    # binding.pry
     if @order_form.valid?
       @order_form.save
-      # pay_item
       redirect_to root_path
     else
       gon.public_key = ENV['PAYJP_PUBLIC_KEY']

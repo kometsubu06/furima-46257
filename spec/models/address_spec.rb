@@ -5,9 +5,9 @@ RSpec.describe Address, type: :model do
     before do
       # Addressをテストするには、関連するOrderが必要です。
       # また、有効なOrderを作成するにはUserとItemが必要なため、先に作成します。
-      user = FactoryBot.create(:user)
-      item = FactoryBot.create(:item)
-      @order = FactoryBot.create(:order, user_id: user.id, item_id: item.id)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @order_form = FactoryBot.build(:order_form, user_id: @user.id, item_id: @item.id)
       # 作成したorderに関連付くaddressのインスタンスを生成します。
       @address = FactoryBot.build(:address, order_id: @order.id)
     end
