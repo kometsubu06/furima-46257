@@ -51,7 +51,6 @@ const pay = () => {
           }
           e.target.submit();
         }).catch((e) => {
-          console.error(e);
           alert('通信中にエラーが発生しました。');
           if (submitBtn) {
             submitBtn.disabled = false;
