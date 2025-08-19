@@ -66,28 +66,17 @@ RSpec.describe OrderForm, type: :model do
         expect(order_form.errors.full_messages).to include("Address can't be blank")
       end
 
-      it '電話番号が空だと保存できないこと' do
-        order_form.phone_number = ''
-        order_form.valid?
-        expect(order_form.errors.full_messages).to include("Phone number can't be blank")
-      end
-
-      it '電話番号が9桁以下だと保存できないこと' do
-        order_form.phone_number = '090123456'
-        order_form.valid?
-        expect(order_form.errors.full_messages).to include('Phone number は不正な値です')
-      end
-
-      it '電話番号が12桁以上だと保存できないこと' do
-        order_form.phone_number = '090123456789'
-        order_form.valid?
-        expect(order_form.errors.full_messages).to include('Phone number は不正な値です')
-      end
-
-      it '電話番号が半角数値でないと保存できないこと' do
-        order_form.phone_number = '０９０１２３４５６７８'
-        order_form.valid?
-        expect(order_form.errors.full_messages).to include('Phone number は不正な値です')
+      it '電話番号が空、または不正な値だと保存できないこと' do
+        invalid_phone_numbers = ['', '090123456', '090123456789', '０９０１２３４５６７８', 'test', '090-1234-5678']
+        invalid_phone_numbers.each do |phone|
+          order_form.phone_number = phone
+          order_form.valid?
+          if phone == ''
+            expect(order_form.errors.full_messages).to include("Phone number can't be blank")
+          else
+            expect(order_form.errors.full_messages).to include('Phone number は不正な値です')
+          end
+        end
       end
 
       it 'user_idが空だと保存できないこと' do

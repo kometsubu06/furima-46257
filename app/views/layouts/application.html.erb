@@ -15,7 +15,7 @@
 
   <body>
     <%= render "shared/header" %>
-    <% if flash[:alert] %>
+    <% if flash[:alert].present? && flash[:alert] != "You need to sign in or sign up before continuing." %>
       <p class="alert"><%= flash[:alert] %></p>
     <% end %>
     <%= yield %>
