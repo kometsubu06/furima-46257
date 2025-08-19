@@ -253,11 +253,14 @@ a {
 
 .item-img-content {
   position: relative;
+  width: 33vh;
+  height: 33vh;
+  margin: 0 auto;
 }
 
 .item-img {
-  width: 33vh;
-  height: 33vh;
+  width: 100%;
+  height: 100%;
 }
 
 .sold-out {
@@ -333,17 +336,4 @@ a {
 
 .purchase-btn-icon {
   width: 60%;
-}
-
-.sold-out {
-  font-weight: bold;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: red;
-  font-size: 30px;
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 10px;
-  border-radius: 5px;
 }

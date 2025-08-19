@@ -6,8 +6,12 @@
     <h2 class="name">
       <%= @item.item_name %>
     </h2>
-    <div class="item-img-content">
+    <div class="item-img-content"> <%# このコンテナに position: relative をCSSで適用します %>
       <%= image_tag @item.image, class:"item-box-img" %>
+      <%# Sold Out オーバーレイを画像コンテナの中に移動 %>
+      <% if @item.sold_out? %>
+        <div class="sold-out"><span>Sold Out!</span></div>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -21,10 +25,6 @@
       <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", item_path(@item), data: {turbo_method: :delete}, class:"item-destroy" %>
-    <% elsif @item.sold_out? %>
-      <div class="sold-out">
-        <span>Sold Out!</span>
-      </div>
     <% elsif user_signed_in? %>
       <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class: "item-red-btn" %>
     <% end %>
