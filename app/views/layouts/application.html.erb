@@ -7,8 +7,8 @@
     <%= csp_meta_tag %>
     <%= include_gon %> 
     <script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
-    <%#= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
     <meta name="turbo-cache-control" content="no-cache">
     <%= yield :head %>
   </head>
@@ -19,7 +19,7 @@
       <p class="alert"><%= flash[:alert] %></p>
     <% end %>
     <%= yield %>
-    <%= javascript_include_tag 'card' %>
+    <%#= javascript_include_tag 'card' #%>
     <%= render "shared/footer" %>
   </body>
 </html>
