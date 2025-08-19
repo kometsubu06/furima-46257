@@ -17,7 +17,8 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'must include both letters and numbers'
 
-  has_one :order
+  has_many :order
+  has_many :items
 
   # 購入済みかどうかを判定するメソッド
   def ordered?
