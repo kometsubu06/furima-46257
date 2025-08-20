@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= include_gon %> 
+    <script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <meta name="turbo-cache-control" content="no-cache">
+    <%= yield :head %>
   </head>
 
   <body>
     <%= render "shared/header" %>
+    <% if flash[:alert].present? && flash[:alert] != "You need to sign in or sign up before continuing." %>
+      <p class="alert"><%= flash[:alert] %></p>
+    <% end %>
     <%= yield %>
     <%= render "shared/footer" %>
   </body>

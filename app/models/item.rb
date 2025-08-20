@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
   belongs_to :user
   has_one_attached :image
+  has_one :order
 
   with_options presence: true do
     validates :image
@@ -21,5 +22,8 @@ class Item < ApplicationRecord
     validates :shipping_cost_id
     validates :prefecture_id
     validates :shipping_day_id
+  end
+  def sold_out?
+    order.present?
   end
 end

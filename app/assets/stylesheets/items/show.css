@@ -25,12 +25,36 @@
   font-size: 25px;
 }
 
+/* 詳細ページの画像コンテナのスタイル */
+.item-box .item-img-content {
+  position: relative; /* sold-out表示の基準点にする */
+  width: 55vh;        /* コンテナの幅を定義 */
+  height: 55vh;       /* コンテナの高さを定義 */
+  margin: 20px auto;  /* 上下左右の余白と中央寄せ */
+}
+
 .item-box-img {
-  height: 50vh;
-  width: 60vw;
-  min-height: 500px;
-  background-color: rgb(205, 202, 202);
+  /* コンテナに合わせて100%表示にする */
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+}
+
+/* 詳細ページ専用のSold Outオーバーレイスタイル */
+.item-box .sold-out {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  background-color: crimson;
+  transform: skewY(-10deg);
+  z-index: 1;
+}
+
+.item-box .sold-out > span {
+  color: #FFF;
+  font-size: 45px;
+  font-weight: bold;
 }
 
 .item-price-box {
