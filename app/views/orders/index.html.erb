@@ -34,9 +34,6 @@
     <%# /支払額の表示 %>
 
     <%= form_with model: @order_form, url: item_orders_path(@item), id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
-    <script>
-    console.log('Public Key from gon:', gon.public_key);
-    </script>
     <%# エラーメッセージの表示 %>
     <%= render 'shared/error_messages', model: @order_form %>
     <%# /エラーメッセージの表示 %>
@@ -51,7 +48,6 @@
           <span class="indispensable">必須</span>
         </div>
         <div id="number-form" class="input-default"></div>
-        <%#= f.hidden_field :token, id: "token" %>
         <div class='available-card'>
           <%= image_tag 'card-visa.gif', class: 'card-logo'%>
           <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>

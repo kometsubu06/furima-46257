@@ -32,15 +32,8 @@ class OrderForm
     end
 
     # OrderとAddressの保存
-    # ActiveRecord::Base.transaction do
     order = Order.create!(user_id: user_id, item_id: item_id)
     Address.create!(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address,
                     building_name: building_name, phone_number: phone_number, order_id: order.id)
-    # end
-    # true
-    # rescue ActiveRecord::RecordInvalid => e
-    # ここでバリデーションエラーをキャッチし、OrderFormにエラーを追加
-    # errors.add(:base, e.message)
-    # false
   end
 end

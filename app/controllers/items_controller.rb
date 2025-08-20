@@ -21,13 +21,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @sold_out = @item.order.present?
   end
 
   def edit
-    @item = Item.find(params[:id])
-    # 商品が売れている場合、トップページにリダイレクトする
     return unless @item.order.present?
 
     redirect_to root_path
