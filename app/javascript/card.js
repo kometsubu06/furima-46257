@@ -48,6 +48,7 @@ const pay = () => {
             const renderDom = document.getElementById("charge-form");
             const tokenObj = `<input value=${token} name='order_form[token]' type="hidden">`;
             renderDom.insertAdjacentHTML("beforeend", tokenObj);
+
           }
           e.target.submit();
         }).catch((e) => {
@@ -65,4 +66,4 @@ const pay = () => {
 };
 
 window.addEventListener("turbo:load", pay);
-window.addEventListener("turbo:render", price);
+window.addEventListener("turbo:render", pay);
