@@ -37,24 +37,20 @@ const pay = () => {
 
         payjp.createToken(numberElement).then(function(response) {
           if (response.error) {
-            alert(`エラーが発生しました: ${response.error.message}`);
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.value = "購入する";
-            }
+            
           } else {
             const token = response.id;
             const renderDom = document.getElementById("charge-form");
             const tokenObj = `<input value=${token} name='order_form[token]' type="hidden">`;
             renderDom.insertAdjacentHTML("beforeend", tokenObj);
-
+            // トークンが正常に取得できた場合のみフォームを送信する
           }
           e.target.submit();
         }).catch((e) => {
-          alert('通信中にエラーが発生しました。');
+          
           if (submitBtn) {
             submitBtn.disabled = false;
-            submitBtn.value = "購入する";
+            submitBtn.value = "購入";
           }
         });
       });
