@@ -5,7 +5,7 @@ app_path = "/var/www/furima-46257"
 worker_processes "#{app_path}/current"
 
 #アプリケーションの設置されているディレクトリを指定
-working_directory app_path
+working_directory Integer(ENV.fetch("UNICORN_WORKERS", "2"))
 
 #Unicornの起動に必要なファイルの設置場所を指定
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
