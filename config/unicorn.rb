@@ -2,10 +2,10 @@
 app_path = "/var/www/furima-46257"
 
 #アプリケーションサーバの性能を決定する
-worker_processes "#{app_path}/current"
+worker_processes ENV.fetch("UNICORN_WORKERS", "2").to_i
 
 #アプリケーションの設置されているディレクトリを指定
-working_directory Integer(ENV.fetch("UNICORN_WORKERS", "2"))
+working_directory "#{app_path}/current"
 
 #Unicornの起動に必要なファイルの設置場所を指定
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
